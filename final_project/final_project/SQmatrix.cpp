@@ -166,8 +166,37 @@ std::vector<std::vector<int>> SQmatrix::getmatrix()
 	 }
  }
  
+ void SQmatrix::Maddconnection(int location1, int location2, int num)
+ {
+	 matrix[location1][location2] += num;
+ }
+
+
+ void SQmatrix::Mdelete_node(int location)
+ {
+	 matrix.erase(matrix.begin()+location);
+	 for (int i = 0; i < sz - 1; ++i)
+	 {
+		 matrix[i].erase(matrix[i].begin() + location);
+	 }
+	 sz -= 1;
+ }
+
+
 
  void graph::pushback_node(std::vector<int> n)
  {
 	 M.enlarge(n);
+ }
+
+
+ void graph::addconnection(int location1, int location2, int num)
+ {
+	 M.Maddconnection(location1, location2, num);
+ }
+
+
+ void graph::delete_node(int location)
+ {
+	 M.Mdelete_node(location);
  }

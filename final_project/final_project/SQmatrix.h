@@ -27,6 +27,8 @@ public:
 	SQmatrix& operator*=(const SQmatrix& rhs);
 	SQmatrix power(int a);
 	void enlarge(std::vector<int> n);
+	void Maddconnection(int location1, int location2,int num);
+	void Mdelete_node(int location);
 };
 
 
@@ -35,7 +37,7 @@ class graph {
 
 public:
 	void pushback_node(std::vector<int> n);
-	void addconnection(int location1, int location2);
+	void addconnection(int location1, int location2,int num);
 	void delete_node(int location);
 	graph(const SQmatrix &S) :M(S) {}
 	SQmatrix getSQmatrix();
