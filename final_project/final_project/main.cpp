@@ -22,7 +22,10 @@ int main()
 	graph G(N);
 	G.pushback_node(addednode);
 	G.getSQmatrix().print();
-	
+	G.addconnection(2, 3, 999);
+	G.getSQmatrix().print();
+	G.delete_node(2);
+	G.getSQmatrix().print();
 	std::cin.get();
 	return 0;
 }

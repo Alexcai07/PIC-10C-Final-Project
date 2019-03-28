@@ -32,7 +32,7 @@ std::vector<std::vector<int>> SQmatrix::getmatrix()
 	 {
 		 for (int j = 0; j < sz; ++j)
 		 {
-			 std::cout <<"  "<< matrix[i][j]<<" " ;
+			 std::cout <<"      "<< matrix[i][j]<<"    " ;
 		 }
 		 std::cout << std::endl;
 	 }
@@ -168,16 +168,16 @@ std::vector<std::vector<int>> SQmatrix::getmatrix()
  
  void SQmatrix::Maddconnection(int location1, int location2, int num)
  {
-	 matrix[location1][location2] += num;
+	 matrix[location1-1][location2-1] += num;
  }
 
 
  void SQmatrix::Mdelete_node(int location)
  {
-	 matrix.erase(matrix.begin()+location);
+	 matrix.erase(matrix.begin()+location-1);
 	 for (int i = 0; i < sz - 1; ++i)
 	 {
-		 matrix[i].erase(matrix[i].begin() + location);
+		 matrix[i].erase(matrix[i].begin() + location-1);
 	 }
 	 sz -= 1;
  }
