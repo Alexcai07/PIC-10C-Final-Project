@@ -1,17 +1,18 @@
 #ifndef SQMATRIX_H
 #define SQMATRIX_H
+#include<iostream>
 #include<vector>
-#include<unordered_set>
+#include<set>
 
 class  SQmatrix {
 private:
 	std::vector<std::vector<int>> matrix;
-	int sz;
+	size_t sz;
 
 public:
-	SQmatrix();
-
-	SQmatrix(const SQmatrix &m);
+	SQmatrix() :sz(1), matrix() {}
+	SQmatrix(std::vector<std::vector<int>> v, size_t newsz);
+	SQmatrix(const SQmatrix &m) {};
 
 	void print()const;
 
@@ -22,27 +23,23 @@ public:
 	SQmatrix operator*(const SQmatrix& rhs);
 	SQmatrix& operator*=(const SQmatrix& rhs);
 
-	SQmatrix operator*(const SQmatrix& rhs);
+	
 	SQmatrix power(int a);
-
-	friend graph;
 	
 };
 
+
+
 class graph {
 private:
-	
-	class node {
-	public:
-		std::vector<node> connection;
-		friend graph;
-		friend SQmatrix;
-	};
-
-	std::unordered_set<node> nodes;
+	std::vector<int> nodes;
 	SQmatrix M;
+	
 
+public:
+	void pushback_node(std::vector<int> n);
 
+	void delete_node();
 };
 
 
