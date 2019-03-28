@@ -2,8 +2,20 @@
 
 int main()
 {
-	std::vector<std::vector<int>> v = { {1, 2, 3}, {1, 3, 5}, {2, 6, 4} };
-	SQmatrix M(v,3);
+	std::vector<std::vector<int>> v1 = { {1, 2, 3}, {1, 3, 5}, {2, 6, 4} };
+	std::vector<std::vector<int>> v2 = { {1, 1, 3}, {1, 1, 5}, {2, 1, 4} };
+	SQmatrix M(v1,3);
+	SQmatrix N(v2,3);
+	M.print();
+	N.print();
+	M =M+ M;
+	M.print();
+	M -= N;
+	M.print();
+	M *= N;
+	M.print();
+	
+	M.power(100);
 	M.print();
 	std::cin.get();
 	return 0;

@@ -12,18 +12,16 @@ private:
 public:
 	SQmatrix() :sz(1), matrix() {}
 	SQmatrix(std::vector<std::vector<int>> v, size_t newsz);
-	SQmatrix(const SQmatrix &m) {};
+
 
 	void print()const;
 
-	SQmatrix operator+(const SQmatrix& rhs);
+	SQmatrix operator+(SQmatrix rhs);
 	SQmatrix& operator+=(const SQmatrix& rhs);
-	SQmatrix operator-(const SQmatrix& rhs);
+	SQmatrix operator-(SQmatrix rhs);
 	SQmatrix& operator-=(const SQmatrix& rhs);
-	SQmatrix operator*(const SQmatrix& rhs);
+	SQmatrix operator*(const SQmatrix &rhs);
 	SQmatrix& operator*=(const SQmatrix& rhs);
-
-	
 	SQmatrix power(int a);
 	
 };
