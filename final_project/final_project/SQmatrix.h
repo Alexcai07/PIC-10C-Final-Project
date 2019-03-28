@@ -11,7 +11,7 @@ private:
 	int sz;
 
 public:
-	SQmatrix() :sz(1), matrix() {}
+	SQmatrix() :sz(1) { matrix = std::vector<std::vector<int>>(1, std::vector<int>{0}); }
 	SQmatrix(std::vector<std::vector<int>> v, int newsz);
 
 	std::vector<std::vector<int>> getmatrix();
@@ -41,7 +41,7 @@ public:
 	void delete_node(int location);
 	graph(const SQmatrix &S) :M(S) {}
 	SQmatrix getSQmatrix();
-	
+	int get_num_of_connection(int location1, int location2,int step);
 private:
 	
 	SQmatrix M;

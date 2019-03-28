@@ -200,3 +200,9 @@ std::vector<std::vector<int>> SQmatrix::getmatrix()
  {
 	 M.Mdelete_node(location);
  }
+
+ int graph::get_num_of_connection(int location1, int location2,int step)
+ {
+	 M.power(step);
+	 return M.getmatrix()[location1 - 1][location2 - 1];
+ }

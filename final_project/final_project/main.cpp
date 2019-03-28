@@ -26,6 +26,26 @@ int main()
 	G.getSQmatrix().print();
 	G.delete_node(2);
 	G.getSQmatrix().print();
+
+//below considers a real life senerio with my graph class, by possibly a person who do not even know matrix 
+//The graph I choose is the Seven Bridges of Konigsberg which is a historically notable problem in mathematics. 
+//Its negative resolution by Leonhard Euler in 1736
+//the problem itself is not included in my discussion. I only use it as an illustration of my graph class
+	SQmatrix start = SQmatrix();
+	graph Sevenbridge(start);
+	std::vector<int> s1 = { 0 };
+	std::vector<int> s2 = { 2,0 };
+	std::vector<int> s3 = { 1,1,0 };
+	std::vector<int> s4 = { 2,0,1,0 };
+	Sevenbridge.pushback_node(s2);
+	Sevenbridge.pushback_node(s3);
+	Sevenbridge.pushback_node(s4);
+	Sevenbridge.getSQmatrix().print();
+	int answer = Sevenbridge.get_num_of_connection(2, 3, 10);
+	std::cout << answer;
+
+
+
 	std::cin.get();
 	return 0;
 }
