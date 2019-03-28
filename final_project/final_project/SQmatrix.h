@@ -26,7 +26,7 @@ public:
 	SQmatrix operator*(const SQmatrix &rhs);
 	SQmatrix& operator*=(const SQmatrix& rhs);
 	SQmatrix power(int a);
-	
+	void enlarge(std::vector<int> n);
 };
 
 

@@ -149,22 +149,25 @@ std::vector<std::vector<int>> SQmatrix::getmatrix()
 	 return M;
  }
 
-
- 
-
- void graph::pushback_node(std::vector<int> n)
+ void SQmatrix::enlarge(std::vector<int> n)
  {
-	 if (n.size() != M.getsize() + 1)
+	 if (n.size() != sz + 1)
 	 {
 		 std::cout << "Invalid node input!" << std::endl;
 	 }
 	 else
 	 {
-		 M.getmatrix().push_back(n);
-		 for (int i = 0; i < M.getsize(); ++i)
+		 matrix.push_back(n);
+		 for (int i = 0; i < sz; ++i)
 		 {
-			 M.getmatrix()[i].push_back(n[i]);
+			matrix[i].push_back(n[i]);
 		 }
-		 M.changesize(M.getsize()+1);
+		 sz+=1;
 	 }
+ }
+ 
+
+ void graph::pushback_node(std::vector<int> n)
+ {
+	 M.enlarge(n);
  }
