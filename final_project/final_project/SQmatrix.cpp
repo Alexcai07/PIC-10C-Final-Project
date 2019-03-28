@@ -1,11 +1,11 @@
 #include"SQmatrix.h"
 
-SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
+SQmatrix::SQmatrix(std::vector<std::vector<int>> v, int newsz)
 {
 	bool isSquare(true);
-	for (size_t i = 0; i < v.size(); i++)
+	for (int i = 0; i < int(v.size()); i++)
 	{
-		if (v[i].size() < newsz)
+		if (int(v[i].size()) < newsz)
 		{
 			isSquare = false;
 		}
@@ -21,10 +21,16 @@ SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
 	}
 }
 
+
+std::vector<std::vector<int>> SQmatrix::getmatrix()
+{
+	return matrix;
+}
+
  void SQmatrix:: print()const {
-	 for (size_t i = 0; i < sz; ++i)
+	 for (int i = 0; i < sz; ++i)
 	 {
-		 for (size_t j = 0; j < sz; ++j)
+		 for (int j = 0; j < sz; ++j)
 		 {
 			 std::cout <<"  "<< matrix[i][j]<<" " ;
 		 }
@@ -32,6 +38,18 @@ SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
 	 }
 	 std::cout << std::endl;
 }
+
+ void SQmatrix::changesize(int newsz)
+ {
+	 sz = newsz;
+ }
+
+
+ int SQmatrix::getsize()
+ {
+	 return sz;
+ }
+
 
  SQmatrix SQmatrix::operator+(SQmatrix rhs)
  {
@@ -42,9 +60,9 @@ SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
 	 }
 	 else
 	 {
-		 for (size_t i = 0; i < sz; ++i)
+		 for (int i = 0; i < sz; ++i)
 		 {
-			 for (size_t j = 0; j < sz; ++j)
+			 for (int j = 0; j < sz; ++j)
 			 {
 				 rhs.matrix[i][j] += matrix[i][j];
 			 }
@@ -67,9 +85,9 @@ SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
 	 }
 	 else
 	 {
-		 for (size_t i = 0; i < sz; ++i)
+		 for (int i = 0; i < sz; ++i)
 		 {
-			 for (size_t j = 0; j < sz; ++j)
+			 for (int j = 0; j < sz; ++j)
 			 {
 				 rhs.matrix[i][j] -= matrix[i][j];
 			 }
@@ -94,12 +112,12 @@ SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
 	 }
 	 else
 	 {
-		 for (size_t i = 0; i < sz; ++i)
+		 for (int i = 0; i < sz; ++i)
 		 {
-			 for (size_t j = 0; j < sz; ++j)
+			 for (int j = 0; j < sz; ++j)
 			 {
 				 int sum = 0;
-				 for (size_t k = 0; k < sz; ++k)
+				 for (int k = 0; k < sz; ++k)
 				 {
 					 sum += matrix[i][k] * rhs.matrix[k][j];
 				 }
@@ -124,4 +142,29 @@ SQmatrix::SQmatrix(std::vector<std::vector<int>> v, size_t newsz)
 		 *this *= temp;
 	 }
 	 return *this;
+ }
+
+ SQmatrix graph::getSQmatrix()
+ {
+	 return M;
+ }
+
+
+ 
+
+ void graph::pushback_node(std::vector<int> n)
+ {
+	 if (n.size() != M.getsize() + 1)
+	 {
+		 std::cout << "Invalid node input!" << std::endl;
+	 }
+	 else
+	 {
+		 M.getmatrix().push_back(n);
+		 for (int i = 0; i < M.getsize(); ++i)
+		 {
+			 M.getmatrix()[i].push_back(n[i]);
+		 }
+		 M.changesize(M.getsize()+1);
+	 }
  }

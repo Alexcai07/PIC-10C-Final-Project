@@ -17,6 +17,12 @@ int main()
 	
 	M.power(100);
 	M.print();
+
+	std::vector<int> addednode{ 3,4,8,4 };
+	graph G(N);
+	G.pushback_node(addednode);
+	G.getSQmatrix().print();
+	
 	std::cin.get();
 	return 0;
 }
